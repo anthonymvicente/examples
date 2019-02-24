@@ -3,7 +3,8 @@
 }
 
 .horizontal-card-row {
-    justify-content: center;
+    width: 50%;
+    margin: 0 auto;
 }
 
 /* if you're only using the vertical style cards, these can be moved into the above card-row */
