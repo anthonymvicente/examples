@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="cards.css">
+        <!--
+            note it's important here that we're using the defer tag
+            this makes the script load AFTER the dom has rendered
+            which means we can execute the js immediately.
+            if you decide not to use defer, you'll need to wait
+            for the dom to load in some way.
+        -->
+        <script type="text/javascript" src="cards.js" defer></script>
+    </head>
+    <body>
+        <!--
+            the 'horizontal-card-row' and 'vertical-card-row' classes
+            are used here to distinguish the two styles since both exist
+            on this page at once. if you're only doing one style, you
+            won't need these distinguishing classes.
+        -->
+        <div class="card-row horizontal-card-row">
+            <div class="card">
+                A
+            </div>
+            <div class="card">
+                B
+            </div>
+            <div class="card">
+                C
+            </div>
+            <div class="card">
+                D
+            </div>
+        </div>
+        <div class="card-row vertical-card-row">
+            <div class="card">
+                A
+            </div>
+            <div class="card">
+                B
+            </div>
+            <div class="card">
+                C
+            </div>
+            <div class="card">
+                D
+            </div>
+        </div>
+    </body>
+</html>
