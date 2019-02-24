@@ -1,0 +1,92 @@
+.card-row {
+    display: flex;
+}
+
+/* if you're only using the vertical style cards, these can be moved into the above card-row */
+.vertical-card-row {
+    flex-direction: column;
+    /* these are purely cosmetic and may vary depending on your need
+     * setting the height helps here because if your list is at the bottom
+     * of a page, the shifting cards will cause the overall page height to change
+     * and may cause other content to shift
+     */
+    align-items: center;
+    height: 500px;
+}
+
+.card {
+    color: #ffffff;
+    background-color: #4987AF;
+    flex: 0 0 20%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px 1px rgba(75, 75, 75, 0.62);
+    z-index: 1;
+    /* we use a delay on the z-index transition to allow time for the cards to shift
+     * before moving the cards under/over other cards. this prevents cards from 
+     * moving through other cards.
+     */
+    transition: margin 150ms linear, box-shadow 150ms linear, z-index 50ms linear 75ms;
+}
+
+.card:hover {
+    z-index: 2;
+    box-shadow: 0px 10px 10px 5px rgba(75, 75, 75, 0.62);
+}
+
+/* from here and below, if you're only using one style (horizontal or vertical)
+ * you can remove the directional class specifier, as it's only needed for having multiple styles on one page
+ */
+
+/* the first card only needs to bring other cards towards it (in this case from the right) */
+.horizontal-card-row .card:first-child:hover {
+    margin: 10px -25px 10px 10px;
+}
+
+/* the last card only needs to bring other cards towards it (in this case from the left) */
+.horizontal-card-row .card:last-child:hover {
+    margin: 10px 10px 10px -25px;
+}
+
+/* all other cards need to bring cards from both directions towards it */
+.horizontal-card-row .card:not(:first-child):not(:last-child):hover {
+    margin: 10px -25px 10px -25px;
+}
+
+/* the class that gets applied to the first card, the card needs to shift itself (and by extension all other cards after it)
+ * towards the card being hovered over. this gives the effect of the other cards sliding under the focused card
+ */
+.horizontal-card-row .shifted-card {
+    margin: 10px 10px 10px 25px;
+}
+
+/* the class that gets applied to the first card only when the last card is hovered.
+ * since the last card doesn't shift over (see last-child card above) we need to shift
+ * the other cards further
+ */
+.horizontal-card-row .shifted-card--last {
+    margin: 10px 10px 10px 50px;
+}
+
+/* the vertical cards are exactly like the horizontal, just with differen margins being shifted */
+
+.vertical-card-row .card:first-child:hover {
+    margin: 10px 10px -25px 10px;
+}
+
+.vertical-card-row .card:last-child:hover {
+    margin: -25px 10px 10px 10px;
+}
+
+.vertical-card-row .card:not(:first-child):not(:last-child):hover {
+    margin: -25px 10px -25px 10px;
+}
+
+.vertical-card-row .shifted-card {
+    margin: 25px 10px 10px 10px;
+}
+
+.vertical-card-row .shifted-card--last {
+    margin: 50xp 10px 10px 10px;
+}
