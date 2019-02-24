@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.horizontal-card-row {
+    justify-content: center;
+}
+
 /* if you're only using the vertical style cards, these can be moved into the above card-row */
 .vertical-card-row {
     flex-direction: column;
@@ -17,10 +21,10 @@
 .card {
     color: #ffffff;
     background-color: #4987AF;
-    flex: 0 0 20%;
     margin: 10px;
     padding: 10px;
     border: 1px solid black;
+    border-radius: 10px;
     box-shadow: 2px 2px 2px 1px rgba(75, 75, 75, 0.62);
     z-index: 1;
     /* we use a delay on the z-index transition to allow time for the cards to shift
@@ -32,7 +36,12 @@
 
 .card:hover {
     z-index: 2;
-    box-shadow: 0px 10px 10px 5px rgba(75, 75, 75, 0.62);
+    box-shadow: 0px 10px 10px 5px rgba(75, 75, 75, 0.80);
+}
+
+/* for vertical cards, we want the box-shadow coming from all directions for better visual distinction */
+.vertical-card-row .card:hover {
+    box-shadow: 0px 0px 10px 5px rgba(75, 75, 75, 0.80);
 }
 
 /* from here and below, if you're only using one style (horizontal or vertical)
@@ -89,4 +98,15 @@
 
 .vertical-card-row .shifted-card--last {
     margin: 50px 10px 10px 10px;
+}
+
+/* the styles below are again cosmetic to make the example look good */
+.card {
+    flex: 0 0 auto;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
 }
